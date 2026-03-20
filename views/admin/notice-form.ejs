@@ -1,0 +1,45 @@
+<%- include('../partials/admin-layout-top', { title: notice ? 'Edit Notice' : 'Add Notice', admin: '' }) %>
+
+<a href="/admin/notices" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Notices</a>
+
+<div class="form-card">
+  <h2><%= notice ? 'Edit Notice' : 'Add New Notice' %></h2>
+
+  <% if (error) { %><div class="alert alert-error"><%= error %></div><% } %>
+
+  <form method="POST" action="<%= notice ? '/admin/notices/edit/' + notice._id : '/admin/notices/add' %>">
+
+    <div class="form-group">
+      <label for="title">Notice Title *</label>
+      <input type="text" id="title" name="title" required maxlength="200"
+             value="<%= notice ? notice.title : '' %>" placeholder="e.g. Admission Open for 2082 B.S.">
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select id="category" name="category">
+        <% const cats = ['General','Admissions','Exams','Events','Holiday','Scholarship','Other']; %>
+        <% cats.forEach(c => { %>
+          <option value="<%= c %>" <%= (notice && notice.category === c) ? 'selected' : '' %>><%= c %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="body">Notice Body *</label>
+      <textarea id="body" name="body" rows="6" required maxlength="2000"
+                placeholder="Write the full notice text here…"><%= notice ? notice.body : '' %></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-admin-primary">
+        <i class="fa-solid fa-<%= notice ? 'floppy-disk' : 'plus' %>"></i>
+        <%= notice ? 'Save Changes' : 'Add Notice' %>
+      </button>
+      <a href="/admin/notices" class="btn-admin-secondary">Cancel</a>
+    </div>
+
+  </form>
+</div>
+
+<%- include('../partials/admin-layout-bottom') %>

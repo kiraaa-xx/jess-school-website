@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login – JESS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="login-page">
+
+<div class="login-card">
+  <div class="login-logo">
+    <i class="fa-solid fa-school"></i>
+    <h1>JESS Admin</h1>
+    <p>Jaycees Everest Secondary School</p>
+  </div>
+
+  <% if (error) { %>
+    <div class="alert alert-error"><i class="fa-solid fa-circle-exclamation"></i> <%= error %></div>
+  <% } %>
+
+  <form method="POST" action="/admin/login">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required autocomplete="username" placeholder="admin">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="••••••••">
+    </div>
+    <button type="submit" class="btn-admin-primary" style="width:100%">
+      <i class="fa-solid fa-right-to-bracket"></i> Login
+    </button>
+  </form>
+
+  <p style="text-align:center;margin-top:20px;font-size:.8rem;color:#666">
+    <a href="/" style="color:var(--admin-blue)">← Back to Website</a>
+  </p>
+</div>
+
+</body>
+</html>

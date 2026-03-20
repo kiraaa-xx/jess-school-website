@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <%- include('../partials/head') %>
+  <title>Events – <%= info.school_name %></title>
+</head>
+<body>
+<%- include('../partials/navbar') %>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label" style="color:var(--gold)">Calendar</div>
+    <h1 class="section-title" style="color:#fff">School Events</h1>
+    <p style="color:rgba(255,255,255,.7);margin-top:12px">Upcoming events, programmes, and activities at JESS.</p>
+  </div>
+</div>
+
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <% if (events.length === 0) { %>
+      <div class="empty-state">
+        <i class="fa-solid fa-calendar-xmark"></i>
+        <p>No events scheduled yet. Check back soon!</p>
+      </div>
+    <% } else { %>
+    <div class="events-list stagger">
+      <% events.forEach(e => { %>
+      <div class="event-full-card reveal">
+        <div class="event-date-badge large">
+          <span class="event-month"><%= new Date(e.event_date).toLocaleString('default',{month:'short'}).toUpperCase() %></span>
+          <span class="event-day"><%= new Date(e.event_date).getDate() %></span>
+          <span class="event-year"><%= new Date(e.event_date).getFullYear() %></span>
+        </div>
+        <div class="event-full-info">
+          <h2><%= e.title %></h2>
+          <p><%- e.description.replace(/\n/g,'<br>') %></p>
+          <span class="event-location"><i class="fa-solid fa-location-dot"></i> <%= e.location %></span>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+<script src="/js/main.js"></script>
+</body>
+</html>

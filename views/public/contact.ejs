@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <%- include('../partials/head') %>
+  <title>Contact – <%= info.school_name %></title>
+</head>
+<body>
+<%- include('../partials/navbar') %>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label" style="color:var(--gold)">Reach Us</div>
+    <h1 class="section-title" style="color:#fff">Contact &amp; Location</h1>
+    <p style="color:rgba(255,255,255,.7);margin-top:12px">We'd love to hear from you. Find us in Dhangadhi, Kailali.</p>
+  </div>
+</div>
+
+<section id="location" class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="location-grid">
+      <div class="location-info reveal left">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Visit Our School</h2>
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-body">
+              <h4>Address</h4>
+              <p><%= info.address %></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="contact-body">
+              <h4>Phone</h4>
+              <a href="tel:<%= info.phone %>"><%= info.phone %></a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-body">
+              <h4>Email</h4>
+              <a href="mailto:<%= info.email %>"><%= info.email %></a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="contact-body">
+              <h4>Office Hours</h4>
+              <p>Sunday – Friday: 10:00 AM – 4:00 PM<br>Saturday &amp; Public Holidays: Closed</p>
+            </div>
+          </div>
+        </div>
+        <div class="social-row">
+          <% if (info.facebook_url) { %>
+          <a href="<%= info.facebook_url %>" target="_blank" rel="noopener" class="social-btn">
+            <i class="fa-brands fa-facebook"></i> Facebook
+          </a>
+          <% } %>
+          <% if (info.maps_url) { %>
+          <a href="<%= info.maps_url %>" target="_blank" rel="noopener" class="social-btn">
+            <i class="fa-solid fa-map"></i> Directions
+          </a>
+          <% } %>
+        </div>
+      </div>
+      <div class="map-container reveal right">
+        <iframe
+          src="<%= info.maps_embed %>"
+          allowfullscreen loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="School Location on Map"
+          style="width:100%;height:100%;border:none">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+<script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<%# views/partials/navbar.ejs — Shared navigation bar %>
+<nav id="navbar">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="JESS Logo" onerror="this.style.display='none'">
+    <span><%= info.school_name || 'Jaycees Everest Secondary School' %></span>
+  </a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/notices">Notices</a></li>
+    <li><a href="/events">Events</a></li>
+    <li><a href="/gallery">Gallery</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="theme-btn" id="themeToggle" title="Toggle dark mode">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <a href="/notices" class="nav-cta">Notices</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#about"   onclick="closeMenu()">About</a>
+  <a href="/notices"  onclick="closeMenu()">Notices</a>
+  <a href="/events"   onclick="closeMenu()">Events</a>
+  <a href="/gallery"  onclick="closeMenu()">Gallery</a>
+  <a href="/contact"  onclick="closeMenu()">Contact</a>
+</div>

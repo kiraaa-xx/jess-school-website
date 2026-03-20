@@ -1,0 +1,43 @@
+<%# views/partials/footer.ejs — Shared footer %>
+<footer>
+  <div class="footer-grid container">
+    <div>
+      <div class="nav-logo" style="margin-bottom:16px">
+        <img src="/images/logo.png" alt="JESS Logo" style="width:44px;height:44px;border-radius:50%" onerror="this.style.display='none'">
+        <span style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff"><%= info.school_name %></span>
+      </div>
+      <p class="footer-desc">A premier institution in Dhangadhi, Kailali, committed to nurturing bright futures through quality education and community service since <%= info.founded_ad %> A.D.</p>
+      <div class="footer-motto">"<%= info.tagline %>"</div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="/#about"><i class="fa-solid fa-chevron-right"></i>About Our School</a></li>
+        <li><a href="/#mission"><i class="fa-solid fa-chevron-right"></i>Mission &amp; Values</a></li>
+        <li><a href="/#programs"><i class="fa-solid fa-chevron-right"></i>Academic Programs</a></li>
+        <li><a href="/gallery"><i class="fa-solid fa-chevron-right"></i>Campus Gallery</a></li>
+        <li><a href="/contact"><i class="fa-solid fa-chevron-right"></i>Location &amp; Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get in Touch</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:<%= info.email %>"><i class="fa-solid fa-envelope"></i><%= info.email %></a></li>
+        <% if (info.facebook_url) { %>
+        <li><a href="<%= info.facebook_url %>" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i>Facebook Page</a></li>
+        <% } %>
+        <% if (info.maps_url) { %>
+        <li><a href="<%= info.maps_url %>" target="_blank" rel="noopener"><i class="fa-solid fa-map"></i>Get Directions</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <%= new Date().getFullYear() %> <%= info.school_name %>. All rights reserved.</span>
+    <span>Built with <i class="fa-solid fa-heart" style="color:var(--gold);font-size:.8rem"></i> for JESS</span>
+  </div>
+</footer>
+
+<button id="backToTop" title="Back to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>

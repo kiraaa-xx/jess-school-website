@@ -1,0 +1,45 @@
+<%- include('../partials/admin-layout-top', { title: 'Dashboard', admin }) %>
+
+<div class="stats-row">
+  <div class="stat-card">
+    <i class="fa-solid fa-bell"></i>
+    <div>
+      <div class="stat-num"><%= noticeCount %></div>
+      <div class="stat-label">Notices</div>
+    </div>
+  </div>
+  <div class="stat-card">
+    <i class="fa-solid fa-calendar"></i>
+    <div>
+      <div class="stat-num"><%= eventCount %></div>
+      <div class="stat-label">Events</div>
+    </div>
+  </div>
+  <div class="stat-card">
+    <i class="fa-solid fa-images"></i>
+    <div>
+      <div class="stat-num"><%= galleryCount %></div>
+      <div class="stat-label">Gallery Photos</div>
+    </div>
+  </div>
+</div>
+
+<div class="quick-actions">
+  <h2>Quick Actions</h2>
+  <div class="action-grid">
+    <a href="/admin/notices/add"  class="action-card"><i class="fa-solid fa-plus"></i><span>Add Notice</span></a>
+    <a href="/admin/events/add"   class="action-card"><i class="fa-solid fa-calendar-plus"></i><span>Add Event</span></a>
+    <a href="/admin/gallery"      class="action-card"><i class="fa-solid fa-upload"></i><span>Upload Photo</span></a>
+    <a href="/admin/settings"     class="action-card"><i class="fa-solid fa-gear"></i><span>Edit Settings</span></a>
+    <a href="/" target="_blank"   class="action-card"><i class="fa-solid fa-eye"></i><span>View Website</span></a>
+    <a href="/admin/change-password" class="action-card"><i class="fa-solid fa-lock"></i><span>Change Password</span></a>
+  </div>
+</div>
+
+<div class="info-box">
+  <h3><i class="fa-solid fa-circle-info"></i> School: <%= info.school_name %></h3>
+  <p>Email: <%= info.email %> &nbsp;·&nbsp; Phone: <%= info.phone %></p>
+  <a href="/admin/settings" class="btn-admin-secondary" style="margin-top:12px;display:inline-block">Edit School Info</a>
+</div>
+
+<%- include('../partials/admin-layout-bottom') %>

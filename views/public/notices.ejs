@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <%- include('../partials/head') %>
+  <title>Notices – <%= info.school_name %></title>
+</head>
+<body>
+<%- include('../partials/navbar') %>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label" style="color:var(--gold)">Updates</div>
+    <h1 class="section-title" style="color:#fff">School Notices</h1>
+    <p style="color:rgba(255,255,255,.7);margin-top:12px">Stay informed with the latest announcements from JESS.</p>
+  </div>
+</div>
+
+<section class="section-pad" style="background:var(--off-white)">
+  <div class="container">
+    <% if (notices.length === 0) { %>
+      <div class="empty-state">
+        <i class="fa-solid fa-bell-slash"></i>
+        <p>No notices published yet. Check back soon!</p>
+      </div>
+    <% } else { %>
+    <div class="notices-list stagger">
+      <% notices.forEach(n => { %>
+      <div class="notice-full-card reveal">
+        <div class="notice-full-header">
+          <span class="notice-tag"><%= n.category %></span>
+          <span class="notice-date"><i class="fa-solid fa-calendar"></i> <%= new Date(n.createdAt).toISOString().split("T")[0] %></span>
+        </div>
+        <h2><%= n.title %></h2>
+        <p><%- n.body.replace(/\n/g,'<br>') %></p>
+      </div>
+      <% }) %>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+<script src="/js/main.js"></script>
+</body>
+</html>

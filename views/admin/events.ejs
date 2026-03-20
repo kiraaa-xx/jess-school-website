@@ -1,0 +1,37 @@
+<%- include('../partials/admin-layout-top', { title: 'Events', admin: '' }) %>
+
+<% if (success) { %><div class="alert alert-success"><i class="fa-solid fa-check"></i> <%= success %></div><% } %>
+
+<div class="list-header">
+  <h2>All Events (<%= events.length %>)</h2>
+  <a href="/admin/events/add" class="btn-admin-primary"><i class="fa-solid fa-plus"></i> Add Event</a>
+</div>
+
+<% if (events.length === 0) { %>
+  <div class="empty-admin"><i class="fa-solid fa-calendar-xmark"></i><p>No events yet. Click "Add Event" to create one.</p></div>
+<% } else { %>
+<div class="admin-table-wrap">
+  <table class="admin-table">
+    <thead>
+      <tr><th>Title</th><th>Date</th><th>Location</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+      <% events.forEach(e => { %>
+      <tr>
+        <td><strong><%= e.title %></strong><br><small style="color:#888"><%= e.description.substring(0,60) %>…</small></td>
+        <td><%= e.event_date %></td>
+        <td><%= e.location %></td>
+        <td class="actions">
+          <a href="/admin/events/edit/<%= e._id %>" class="btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
+          <form method="POST" action="/admin/events/delete/<%= e._id %>" onsubmit="return confirm('Delete this event?')">
+            <button type="submit" class="btn-delete"><i class="fa-solid fa-trash"></i> Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<% } %>
+
+<%- include('../partials/admin-layout-bottom') %>

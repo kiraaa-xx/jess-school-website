@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <%- include('../partials/head') %>
+  <title><%= info.school_name %> – Dhangadhi</title>
+</head>
+<body>
+
+<!-- Splash Screen -->
+<div id="splash">
+  <div class="logo-ring">
+    <img src="/images/logo.png" alt="JESS Logo" onerror="this.style.display='none'">
+  </div>
+  <h1><%= info.school_name %></h1>
+  <p>Dhangadhi, Kailali · Est. <%= info.founded_ad %></p>
+  <div class="bar"><div class="bar-fill"></div></div>
+</div>
+
+<%- include('../partials/navbar') %>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section id="hero">
+  <div class="hero-grid container">
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fa-solid fa-star"></i> Est. <%= info.founded_ad %> A.D. &nbsp;·&nbsp; Dhangadhi, Nepal</div>
+      <h1 class="hero-title"><%- info.hero_title || 'Nurturing <span>Bright Futures</span><br>Since 1982' %></h1>
+      <p class="hero-tagline">"<%= info.tagline %>"</p>
+      <p class="hero-desc">A premier English-medium institution serving over <%= info.students_count %>+ students from ECD to Grade 12 in the heart of Sudurpashchim Province.</p>
+      <div class="hero-btns">
+        <a href="#about" class="btn-primary"><i class="fa-solid fa-book-open"></i> Discover Our Story</a>
+        <a href="/contact"  class="btn-outline"><i class="fa-solid fa-map-location-dot"></i> Visit Us</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num" id="statStudents">0</div><div class="stat-label">Students</div></div>
+        <div class="stat"><div class="stat-num">42+</div><div class="stat-label">Years</div></div>
+        <div class="stat"><div class="stat-num">ECD–12</div><div class="stat-label">Grades</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-logo-wrap">
+        <div class="hero-logo-ring"></div>
+        <div class="hero-logo-ring-2"></div>
+        <div class="hero-logo-inner">
+          <img src="/images/logo.png" alt="JESS Logo" onerror="this.style.display='none'">
+        </div>
+        <div class="hero-motto"><i class="fa-solid fa-book" style="font-size:.7rem"></i> Knowledge Is Wisdom <i class="fa-solid fa-book" style="font-size:.7rem"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+<section id="about" class="section-pad" style="background:var(--off-white)">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal left">
+        <div class="about-img-card">
+          <iframe class="map-embed"
+            src="<%= info.maps_embed %>"
+            allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="School Location"></iframe>
+        </div>
+        <div class="about-badge">
+          <div class="num"><%= info.founded_bs %></div>
+          <div class="lbl">Founded B.S.</div>
+        </div>
+      </div>
+      <div class="about-content reveal right">
+        <div class="section-label">Our History</div>
+        <h2 class="section-title">A Legacy Built on<br>Excellence &amp; Service</h2>
+        <p class="section-sub"><%- info.about_text %></p>
+        <div class="about-timeline stagger">
+          <div class="timeline-item">
+            <div class="timeline-dot"><%= info.founded_ad %></div>
+            <div class="timeline-body">
+              <h4>Foundation</h4>
+              <p>Established by Dhangadhi JCI with a mission to provide accessible, quality English-medium education to children of the far-western region.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">2000s</div>
+            <div class="timeline-body">
+              <h4>Growth &amp; Recognition</h4>
+              <p>Expanded from primary to secondary level, earning community trust with consistent academic results and holistic development.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">Today</div>
+            <div class="timeline-body">
+              <h4><%= info.students_count %>+ Students &amp; Counting</h4>
+              <p>Today, JESS serves over <%= info.students_count %> enrolled students from ECD through Grade 12, with dedicated faculty and scholarship programs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ MISSION ═══════════════════════ -->
+<section id="mission" class="section-pad" style="background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:#fff">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:56px">
+      <div class="section-label" style="color:var(--gold)">Our Purpose</div>
+      <h2 class="section-title" style="color:#fff">Values That Guide<br>Every Step</h2>
+    </div>
+    <div class="mission-grid stagger">
+      <div class="mission-card"><div class="mission-icon"><i class="fa-solid fa-graduation-cap"></i></div><h3>Academic Excellence</h3><p>Rigorous, engaging curricula that prepare students for national examinations and lifelong learning.</p></div>
+      <div class="mission-card"><div class="mission-icon"><i class="fa-solid fa-seedling"></i></div><h3>Holistic Development</h3><p>Cultural awareness, physical fitness, creative arts, and leadership through co-curricular activities.</p></div>
+      <div class="mission-card"><div class="mission-icon"><i class="fa-solid fa-handshake"></i></div><h3>Community &amp; Service</h3><p>Rooted in JCI spirit, we cultivate responsible citizens who contribute to families and nation.</p></div>
+      <div class="mission-card"><div class="mission-icon"><i class="fa-solid fa-award"></i></div><h3>Scholarship &amp; Access</h3><p>Merit and need-based scholarship programs ensure financial constraints never block a bright future.</p></div>
+      <div class="mission-card"><div class="mission-icon"><i class="fa-solid fa-mountain-sun"></i></div><h3>Nepali Identity</h3><p>We celebrate our rich cultural heritage, ensuring students remain connected to their roots.</p></div>
+      <div class="mission-card"><div class="mission-icon"><i class="fa-solid fa-lightbulb"></i></div><h3>Innovation &amp; Growth</h3><p>Continuously evolving teaching methods and facilities for the 21st century learner.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ PROGRAMS ═══════════════════════ -->
+<section id="programs" class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Academics</div>
+      <h2 class="section-title">Programs We Offer</h2>
+      <p class="section-sub">From early childhood through secondary education — a structured, enriching journey for every student.</p>
+    </div>
+    <div class="programs-grid stagger">
+      <div class="prog-card"><div class="prog-icon"><i class="fa-solid fa-child-reaching"></i></div><h3>Early Childhood Development</h3><p>A nurturing environment building foundational literacy, numeracy, and social skills through play-based learning.</p><span class="prog-tag">Ages 3–5</span></div>
+      <div class="prog-card"><div class="prog-icon"><i class="fa-solid fa-pencil"></i></div><h3>Primary School</h3><p>Comprehensive English-medium primary education establishing strong academic foundations in core subjects.</p><span class="prog-tag">Grades 1–5</span></div>
+      <div class="prog-card"><div class="prog-icon"><i class="fa-solid fa-flask"></i></div><h3>Lower Secondary</h3><p>Expanding horizons with Science, Mathematics, Social Studies, and Nepali language alongside English instruction.</p><span class="prog-tag">Grades 6–8</span></div>
+      <div class="prog-card"><div class="prog-icon"><i class="fa-solid fa-book-open-reader"></i></div><h3>Secondary (SEE)</h3><p>Rigorous SEE preparation with experienced faculty, regular assessments, and targeted support for national exams.</p><span class="prog-tag">Grades 9–10</span></div>
+      <div class="prog-card"><div class="prog-icon"><i class="fa-solid fa-person-chalkboard"></i></div><h3>Higher Secondary (+2)</h3><p>Management stream with dedicated faculty, preparing students for NEB board examinations and higher education opportunities.</p><span class="prog-tag">Grades 11-12</span></div>
+      <div class="prog-card"><div class="prog-icon"><i class="fa-solid fa-medal"></i></div><h3>Scholarships</h3><p>Merit and need-based scholarship programs so financial constraints never stand in the way of a bright future.</p><span class="prog-tag">Multiple Categories</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ NOTICES PREVIEW ═══════════════════════ -->
+<section class="section-pad" style="background:var(--off-white)">
+  <div class="container">
+    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:40px">
+      <div>
+        <div class="section-label">Latest Updates</div>
+        <h2 class="section-title">School Notices</h2>
+      </div>
+      <a href="/notices" class="btn-primary" style="align-self:flex-end"><i class="fa-solid fa-bell"></i> All Notices</a>
+    </div>
+    <div class="notices-grid stagger">
+      <% if (notices.length === 0) { %>
+        <p style="color:var(--text-muted)">No notices yet.</p>
+      <% } %>
+      <% notices.forEach(n => { %>
+      <div class="notice-card">
+        <span class="notice-tag"><%= n.category %></span>
+        <h3><%= n.title %></h3>
+        <p><%= n.body.length > 120 ? n.body.substring(0, 120) + '…' : n.body %></p>
+        <span class="notice-date"><i class="fa-solid fa-calendar"></i> <%= new Date(n.createdAt).toISOString().split("T")[0] %></span>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ EVENTS PREVIEW ═══════════════════════ -->
+<section class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:40px">
+      <div>
+        <div class="section-label">What's Coming</div>
+        <h2 class="section-title">Upcoming Events</h2>
+      </div>
+      <a href="/events" class="btn-primary" style="align-self:flex-end"><i class="fa-solid fa-calendar"></i> All Events</a>
+    </div>
+    <div class="events-grid stagger">
+      <% if (events.length === 0) { %>
+        <p style="color:var(--text-muted)">No events yet.</p>
+      <% } %>
+      <% events.forEach(e => { %>
+      <div class="event-card">
+        <div class="event-date-badge">
+          <span class="event-month"><%= new Date(e.event_date).toLocaleString('default',{month:'short'}).toUpperCase() %></span>
+          <span class="event-day"><%= new Date(e.event_date).getDate() %></span>
+        </div>
+        <div class="event-info">
+          <h3><%= e.title %></h3>
+          <p><%= e.description.length > 100 ? e.description.substring(0,100)+'…' : e.description %></p>
+          <span class="event-location"><i class="fa-solid fa-location-dot"></i> <%= e.location %></span>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ GALLERY PREVIEW ═══════════════════════ -->
+<section id="gallery" class="section-pad" style="background:var(--section-alt)">
+  <div class="container">
+    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:40px">
+      <div>
+        <div class="section-label">Campus Life</div>
+        <h2 class="section-title">School Gallery</h2>
+      </div>
+      <a href="/gallery" class="btn-primary" style="align-self:flex-end"><i class="fa-solid fa-images"></i> Full Gallery</a>
+    </div>
+    <div class="gallery-grid stagger">
+      <% if (gallery.length === 0) { %>
+        <!-- Show placeholder cards if no images uploaded yet -->
+        <% const placeholders = ['School Building','Classrooms','Library','Sports','Events']; %>
+        <% placeholders.forEach((label, i) => { %>
+        <div class="gal-item">
+          <div class="gal-placeholder">
+            <i class="fa-solid fa-image ph-icon"></i>
+            <span><%= label %></span>
+          </div>
+        </div>
+        <% }) %>
+      <% } else { %>
+        <% gallery.forEach(img => { %>
+        <div class="gal-item">
+          <img src="<%= img.url %>" alt="<%= img.caption || 'School photo' %>" class="gal-img" loading="lazy">
+          <div class="gal-overlay"><span><%= img.caption %></span></div>
+        </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ LEADERSHIP ═══════════════════════ -->
+<section id="leadership" class="section-pad" style="background:var(--white)">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:56px">
+      <div class="section-label">Our Team</div>
+      <h2 class="section-title">School Leadership</h2>
+      <p class="section-sub" style="margin:16px auto 0">
+        Dedicated educators guiding JESS with vision, experience, and commitment to every student's success.
+      </p>
+    </div>
+    <div class="leadership-grid stagger">
+
+      <!-- PRINCIPAL -->
+      <div class="leader-card">
+        <div class="leader-photo-wrap">
+          <img
+            src="/images/principal.jpg"
+            alt="Karunakar Pandey – Principal"
+            class="leader-photo"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          >
+          <div class="leader-photo-fallback" style="display:none">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <div class="leader-badge"><i class="fa-solid fa-star"></i></div>
+        </div>
+        <div class="leader-info">
+          <span class="leader-role">Principal</span>
+          <h3 class="leader-name">Karunakar Pandey</h3>
+          <p class="leader-desc">Leading Jaycees Everest Secondary School with dedication and a steadfast commitment to academic excellence and community values.</p>
+          <div class="leader-tags">
+            <span><i class="fa-solid fa-graduation-cap"></i> Administration</span>
+            <span><i class="fa-solid fa-school"></i> JESS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VICE-PRINCIPAL -->
+      <div class="leader-card">
+        <div class="leader-photo-wrap">
+          <img
+            src="/images/vice-principal.jpg"
+            alt="Dipen Saud – Vice-Principal"
+            class="leader-photo"
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          >
+          <div class="leader-photo-fallback" style="display:none">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <div class="leader-badge"><i class="fa-solid fa-award"></i></div>
+        </div>
+        <div class="leader-info">
+          <span class="leader-role">Vice-Principal</span>
+          <h3 class="leader-name">Dipen Saud</h3>
+          <p class="leader-desc">Supporting the school's academic and administrative vision while fostering a nurturing, inclusive environment for students and staff alike.</p>
+          <div class="leader-tags">   
+            <span><i class="fa-solid fa-graduation-cap"></i> Administration</span>
+            <span><i class="fa-solid fa-school"></i> JESS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+
+<script src="/js/main.js"></script>
+<script>
+  // Animate the student count on hero load
+  animateCount(document.getElementById('statStudents'), <%= parseInt(info.students_count) || 1263 %>);
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<%- include('../partials/admin-layout-top', { title: 'Notices', admin: '' }) %>
+
+<% if (success) { %><div class="alert alert-success"><i class="fa-solid fa-check"></i> <%= success %></div><% } %>
+
+<div class="list-header">
+  <h2>All Notices (<%= notices.length %>)</h2>
+  <a href="/admin/notices/add" class="btn-admin-primary"><i class="fa-solid fa-plus"></i> Add Notice</a>
+</div>
+
+<% if (notices.length === 0) { %>
+  <div class="empty-admin"><i class="fa-solid fa-bell-slash"></i><p>No notices yet. Click "Add Notice" to create one.</p></div>
+<% } else { %>
+<div class="admin-table-wrap">
+  <table class="admin-table">
+    <thead>
+      <tr><th>Title</th><th>Category</th><th>Date</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+      <% notices.forEach(n => { %>
+      <tr>
+        <td><strong><%= n.title %></strong><br><small style="color:#888"><%= n.body.substring(0,60) %>…</small></td>
+        <td><span class="badge"><%= n.category %></span></td>
+        <td><%= new Date(n.createdAt).toISOString().split("T")[0] %></td>
+        <td class="actions">
+          <a href="/admin/notices/edit/<%= n._id %>" class="btn-edit"><i class="fa-solid fa-pen"></i> Edit</a>
+          <form method="POST" action="/admin/notices/delete/<%= n._id %>" onsubmit="return confirm('Delete this notice?')">
+            <button type="submit" class="btn-delete"><i class="fa-solid fa-trash"></i> Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<% } %>
+
+<%- include('../partials/admin-layout-bottom') %>

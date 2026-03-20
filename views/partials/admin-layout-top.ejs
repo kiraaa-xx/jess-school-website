@@ -1,0 +1,39 @@
+<%# views/partials/admin-layout-top.ejs
+    Include at the top of every admin page.
+    Pass in: title (string), admin (string) %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> – JESS Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <i class="fa-solid fa-school"></i>
+    <span>JESS Admin</span>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="/admin"                  class="<%= title==='Dashboard'  ? 'active':'' %>"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+    <a href="/admin/notices"          class="<%= title==='Notices'    ? 'active':'' %>"><i class="fa-solid fa-bell"></i> Notices</a>
+    <a href="/admin/events"           class="<%= title==='Events'     ? 'active':'' %>"><i class="fa-solid fa-calendar"></i> Events</a>
+    <a href="/admin/gallery"          class="<%= title==='Gallery'    ? 'active':'' %>"><i class="fa-solid fa-images"></i> Gallery</a>
+    <a href="/admin/settings"         class="<%= title==='Settings'   ? 'active':'' %>"><i class="fa-solid fa-gear"></i> Settings</a>
+    <a href="/admin/change-password"  class="<%= title==='Password'   ? 'active':'' %>"><i class="fa-solid fa-lock"></i> Password</a>
+    <a href="/" target="_blank"><i class="fa-solid fa-eye"></i> View Site</a>
+    <a href="/admin/logout" class="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+  </nav>
+</aside>
+
+<!-- Main Content -->
+<main class="admin-main">
+  <div class="admin-topbar">
+    <h1 class="admin-page-title"><%= title %></h1>
+    <span class="admin-user"><i class="fa-solid fa-user-shield"></i> <%= admin || 'Admin' %></span>
+  </div>
+  <div class="admin-content">

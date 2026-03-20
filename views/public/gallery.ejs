@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <%- include('../partials/head') %>
+  <title>Gallery – <%= info.school_name %></title>
+</head>
+<body>
+<%- include('../partials/navbar') %>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label" style="color:var(--gold)">Campus Life</div>
+    <h1 class="section-title" style="color:#fff">Photo Gallery</h1>
+    <p style="color:rgba(255,255,255,.7);margin-top:12px">Moments from our school life, events, and campus.</p>
+  </div>
+</div>
+
+<section class="section-pad" style="background:var(--section-alt)">
+  <div class="container">
+    <% if (gallery.length === 0) { %>
+      <div class="empty-state">
+        <i class="fa-solid fa-images"></i>
+        <p>No photos uploaded yet. Check back soon!</p>
+      </div>
+    <% } else { %>
+    <div class="gallery-full-grid stagger">
+      <% gallery.forEach(img => { %>
+      <div class="gal-full-item reveal">
+        <img
+          src="<%= img.url %>"
+          alt="<%= img.caption || 'School photo' %>"
+          loading="lazy"
+          onclick="openLightbox(this.src, '<%= img.caption %>')">
+        <% if (img.caption) { %><div class="gal-caption"><%= img.caption %></div><% } %>
+      </div>
+      <% }) %>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:24px">
+  <img id="lightboxImg" src="" alt="" style="max-width:90vw;max-height:80vh;border-radius:8px;object-fit:contain">
+  <p id="lightboxCaption" style="color:#fff;text-align:center;font-size:.9rem"></p>
+  <button onclick="closeLightbox()" style="position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer">&times;</button>
+</div>
+
+<%- include('../partials/footer') %>
+<script src="/js/main.js"></script>
+<script>
+function openLightbox(src, caption) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxCaption').textContent = caption || '';
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>

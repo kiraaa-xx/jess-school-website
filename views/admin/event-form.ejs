@@ -1,0 +1,48 @@
+<%- include('../partials/admin-layout-top', { title: event ? 'Edit Event' : 'Add Event', admin: '' }) %>
+
+<a href="/admin/events" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Events</a>
+
+<div class="form-card">
+  <h2><%= event ? 'Edit Event' : 'Add New Event' %></h2>
+
+  <% if (error) { %><div class="alert alert-error"><%= error %></div><% } %>
+
+  <form method="POST" action="<%= event ? '/admin/events/edit/' + event._id : '/admin/events/add' %>">
+
+    <div class="form-group">
+      <label for="title">Event Title *</label>
+      <input type="text" id="title" name="title" required maxlength="200"
+             value="<%= event ? event.title : '' %>" placeholder="e.g. Annual Sports Day">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="event_date">Event Date *</label>
+        <input type="date" id="event_date" name="event_date" required
+               value="<%= event ? event.event_date : '' %>">
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" maxlength="200"
+               value="<%= event ? event.location : 'JESS Campus' %>" placeholder="JESS Campus">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" name="description" rows="5" maxlength="2000"
+                placeholder="Brief description of the event…"><%= event ? event.description : '' %></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-admin-primary">
+        <i class="fa-solid fa-<%= event ? 'floppy-disk' : 'plus' %>"></i>
+        <%= event ? 'Save Changes' : 'Add Event' %>
+      </button>
+      <a href="/admin/events" class="btn-admin-secondary">Cancel</a>
+    </div>
+
+  </form>
+</div>
+
+<%- include('../partials/admin-layout-bottom') %>

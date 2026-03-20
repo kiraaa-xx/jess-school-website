@@ -1,0 +1,46 @@
+<%- include('../partials/admin-layout-top', { title: 'Gallery', admin: '' }) %>
+
+<% if (success) { %><div class="alert alert-success"><i class="fa-solid fa-check"></i> <%= success %></div><% } %>
+<% if (error)   { %><div class="alert alert-error"><i class="fa-solid fa-circle-exclamation"></i> <%= error %></div><% } %>
+
+<div class="form-card" style="margin-bottom:32px">
+  <h2><i class="fa-solid fa-upload"></i> Upload New Photo</h2>
+  <form method="POST" action="/admin/gallery/upload" enctype="multipart/form-data">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="image">Select Image (JPG, PNG, WEBP — max 5MB)</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+      </div>
+      <div class="form-group">
+        <label for="caption">Caption (optional)</label>
+        <input type="text" id="caption" name="caption" maxlength="200" placeholder="e.g. Annual Sports Day 2081">
+      </div>
+    </div>
+    <button type="submit" class="btn-admin-primary"><i class="fa-solid fa-upload"></i> Upload Photo</button>
+  </form>
+</div>
+
+<h2>All Photos (<%= gallery.length %>)</h2>
+
+<% if (gallery.length === 0) { %>
+  <div class="empty-admin"><i class="fa-solid fa-images"></i><p>No photos yet. Upload one above.</p></div>
+<% } else { %>
+<div class="admin-gallery-grid">
+  <% gallery.forEach(img => { %>
+  <div class="admin-gal-card">
+    <img src="<%= img.url %>" alt="<%= img.caption || 'Gallery photo' %>" loading="lazy">
+    <div class="admin-gal-info">
+      <form method="POST" action="/admin/gallery/caption/<%= img._id %>" style="display:flex;gap:8px;margin-bottom:8px">
+        <input type="text" name="caption" value="<%= img.caption %>" placeholder="Add caption…" style="flex:1;padding:6px 10px;border:1px solid #ddd;border-radius:6px;font-size:.8rem">
+        <button type="submit" class="btn-edit" title="Save caption"><i class="fa-solid fa-check"></i></button>
+      </form>
+      <form method="POST" action="/admin/gallery/delete/<%= img._id %>" onsubmit="return confirm('Delete this photo?')">
+        <button type="submit" class="btn-delete" style="width:100%"><i class="fa-solid fa-trash"></i> Delete</button>
+      </form>
+    </div>
+  </div>
+  <% }) %>
+</div>
+<% } %>
+
+<%- include('../partials/admin-layout-bottom') %>
