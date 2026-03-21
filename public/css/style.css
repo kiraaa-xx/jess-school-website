@@ -1,5 +1,6 @@
 /* =====================================================================
    public/css/style.css
+   JESS School Website - Full Stylesheet with all fixes
    ===================================================================== */
 
 /* ── DESIGN TOKENS ── */
@@ -20,6 +21,8 @@
   --shadow:      0 8px 32px rgba(13,43,94,0.12);
   --transition:  cubic-bezier(0.4,0,0.2,1);
 }
+
+/* ── DARK MODE ── */
 [data-theme="dark"] {
   --gold:        #F5C518;
   --gold-deep:   #D4A80F;
@@ -116,11 +119,8 @@ nav.scrolled{background:var(--white);box-shadow:0 2px 24px rgba(13,43,94,.1)}
 .nav-logo{display:flex;align-items:center;gap:12px}
 .nav-logo img{width:44px;height:44px;border-radius:50%}
 .nav-logo span{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--navy);line-height:1.2}
-.nav-school-short{display:none}
-@media(max-width:768px){
-  .nav-school-full{display:none}
-  .nav-school-short{display:block}
-}
+.nav-school-full{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--navy);line-height:1.2}
+.nav-school-short{display:none;font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--navy);line-height:1.2}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{font-size:.875rem;font-weight:500;letter-spacing:.04em;color:var(--text);position:relative;padding-bottom:2px}
 .nav-links a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .3s}
@@ -319,6 +319,8 @@ footer h4{font-size:.8rem;font-weight:700;letter-spacing:.15em;text-transform:up
 @media(max-width:768px){
   .nav-links{display:none}
   .hamburger{display:flex}
+  .nav-school-full{display:none}
+  .nav-school-short{display:block}
   .programs-grid,.mission-grid,.notices-grid,.events-grid,.leadership-grid{grid-template-columns:1fr}
   .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
   .gal-item:first-child,.gal-item:nth-child(2){grid-column:span 1;grid-row:span 1}
