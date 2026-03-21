@@ -1,7 +1,5 @@
 /* =====================================================================
    public/css/style.css
-   Main stylesheet for the JESS public website.
-   Preserves the original design tokens and layout from the original HTML.
    ===================================================================== */
 
 /* ── DESIGN TOKENS ── */
@@ -25,18 +23,55 @@
 [data-theme="dark"] {
   --gold:        #F5C518;
   --gold-deep:   #D4A80F;
-  --gold-pale:   #2A2200;
-  --navy:        #7EAAFF;
-  --navy-mid:    #4A7FDD;
-  --navy-light:  #6FA0FF;
-  --white:       #0D0E1A;
-  --off-white:   #12132A;
-  --text:        #E8E8F5;
-  --text-muted:  #9999BB;
-  --card-bg:     #181A30;
-  --section-alt: #0F1020;
-  --border:      rgba(127,170,255,0.15);
-  --shadow:      0 8px 32px rgba(0,0,0,0.4);
+  --gold-pale:   #2A1800;
+  --navy:        #0D2B5E;
+  --navy-mid:    #1A3F8F;
+  --navy-light:  #2E5FCA;
+  --white:       #0D0E14;
+  --off-white:   #111218;
+  --text:        #F0F0F0;
+  --text-muted:  #AAAAAA;
+  --card-bg:     #16171F;
+  --section-alt: #0A0B10;
+  --border:      rgba(255,255,255,0.08);
+  --shadow:      0 8px 32px rgba(0,0,0,0.5);
+}
+
+/* ── DARK MODE TEXT FIXES ── */
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .section-label,
+[data-theme="dark"] .nav-logo span,
+[data-theme="dark"] .prog-card h3,
+[data-theme="dark"] .notice-card h3,
+[data-theme="dark"] .notice-full-card h2,
+[data-theme="dark"] .event-info h3,
+[data-theme="dark"] .event-full-info h2,
+[data-theme="dark"] .timeline-body h4,
+[data-theme="dark"] .leader-name,
+[data-theme="dark"] .contact-body h4,
+[data-theme="dark"] .about-badge .lbl {
+  color: #F0F0F0 !important;
+}
+[data-theme="dark"] .prog-icon {
+  background: rgba(245,197,24,0.15);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+[data-theme="dark"] .prog-tag {
+  background: rgba(245,197,24,0.15);
+  color: var(--gold);
+}
+[data-theme="dark"] .notice-tag {
+  background: rgba(245,197,24,0.15);
+  color: var(--gold);
+}
+[data-theme="dark"] .prog-card,
+[data-theme="dark"] .notice-card,
+[data-theme="dark"] .event-card,
+[data-theme="dark"] .leader-card,
+[data-theme="dark"] .notice-full-card,
+[data-theme="dark"] .event-full-card {
+  border-color: rgba(255,255,255,0.08);
 }
 
 /* ── RESET ── */
@@ -81,6 +116,11 @@ nav.scrolled{background:var(--white);box-shadow:0 2px 24px rgba(13,43,94,.1)}
 .nav-logo{display:flex;align-items:center;gap:12px}
 .nav-logo img{width:44px;height:44px;border-radius:50%}
 .nav-logo span{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--navy);line-height:1.2}
+.nav-school-short{display:none}
+@media(max-width:768px){
+  .nav-school-full{display:none}
+  .nav-school-short{display:block}
+}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{font-size:.875rem;font-weight:500;letter-spacing:.04em;color:var(--text);position:relative;padding-bottom:2px}
 .nav-links a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .3s}
@@ -245,6 +285,9 @@ nav.scrolled{background:var(--white);box-shadow:0 2px 24px rgba(13,43,94,.1)}
 .leader-role{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep)}
 .leader-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin:4px 0 8px}
 .leader-desc{font-size:.85rem;color:var(--text-muted);line-height:1.7}
+.leader-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.leader-tags span{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;color:var(--navy);background:var(--gold-pale);padding:3px 10px;border-radius:100px}
+.leader-tags span i{font-size:.65rem;color:var(--gold-deep)}
 
 /* ── FOOTER ── */
 footer{background:linear-gradient(135deg,#060D1E,#0D2040);color:rgba(255,255,255,.7);padding:80px 0 0}
@@ -289,24 +332,21 @@ footer h4{font-size:.8rem;font-weight:700;letter-spacing:.15em;text-transform:up
   .hero-btns{flex-direction:column}
   .btn-primary,.btn-outline{justify-content:center}
 }
-.leader-tags {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
-  flex-wrap: wrap;
-}
-.leader-tags span {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: .72rem;
-  font-weight: 600;
-  color: var(--navy);
-  background: var(--gold-pale);
-  padding: 3px 10px;
-  border-radius: 100px;
-}
-.leader-tags span i {
-  font-size: .65rem;
-  color: var(--gold-deep);
-}
+
+/* ── GOOGLE TRANSLATE ── */
+#google_translate_element{display:inline-flex;align-items:center}
+.goog-te-gadget{font-family:inherit !important;font-size:0 !important}
+.goog-te-gadget select{background:linear-gradient(135deg,var(--navy),var(--navy-mid));color:#fff;border:none;padding:7px 12px;border-radius:100px;font-size:.8rem;font-weight:600;cursor:pointer;outline:none}
+.goog-te-gadget>span{display:none !important}
+.goog-logo-link{display:none !important}
+
+/* ── NEPALI FONT (only when translated) ── */
+.translated-ltr body,
+.translated-ltr p,
+.translated-ltr h1,
+.translated-ltr h2,
+.translated-ltr h3,
+.translated-ltr h4,
+.translated-ltr span,
+.translated-ltr a,
+.translated-ltr li{font-family:'Noto Sans Devanagari','DM Sans',sans-serif !important}
